@@ -2,45 +2,34 @@ package repositories
 
 import (
 	"akastra-mobile-api/src/app/entities"
-	"database/sql"
+	"akastra-mobile-api/src/infrastructure/models"
+
+	"gorm.io/gorm"
 )
 
 type UserRepository interface {
-	GetAllUsers() ([]entities.User, error)
-	GetUserByID(id int) (*entities.User, error)
+	GetAllUsers() ([]models.User, error)
+	GetUserByID(id int) (*models.User, error)
 	CreateUser(user entities.User) error
 }
 
 type userRepository struct {
-	db *sql.DB
+	db *gorm.DB
 }
 
-func NewUserRepository(db *sql.DB) UserRepository {
+func NewUserRepository(db *gorm.DB) UserRepository {
 	return &userRepository{db: db}
 }
 
-func (r *userRepository) GetAllUsers() ([]entities.User, error) {
-	rows, err := r.db.Query("SELECT id, name, email FROM users")
-	if err != nil {
-		return nil, err
-	}
-	defer rows.Close()
-	
-	var users []entities.User
-	for rows.Next() {
-		var user entities.User
-		if err := rows.Scan(&user.ID, &user.Name, &user.Email); err != nil {
-			return nil, err
-		}
-		users = append(users, user)
-	}
-	return users, nil
+func (r *userRepository) GetAllUsers() ([]models.User, error) {
+	var users []models.User
+	err := r.db.Find(&users).Error
+	return users, err
 }
 
-func (r *userRepository) GetUserByID(id int) (*entities.User, error) {
-	var user entities.User
-	err := r.db.QueryRow("SELECT id, name, email FROM users WHERE id = ?", id).
-		Scan(&user.ID, &user.Name, &user.Email)
+func (r *userRepository) GetUserByID(id int) (*models.User, error) {
+	var user models.User
+	err := r.db.First(&user, id).Error
 	if err != nil {
 		return nil, err
 	}
@@ -48,6 +37,5 @@ func (r *userRepository) GetUserByID(id int) (*entities.User, error) {
 }
 
 func (r *userRepository) CreateUser(user entities.User) error {
-	_, err := r.db.Exec("INSERT INTO users (name, email, password) VALUES (?, ?, ?)", user.Name, user.Email, user.Password)
-	return err
+	return r.db.Create(&user).Error
 }

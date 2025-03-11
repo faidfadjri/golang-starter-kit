@@ -1,7 +1,6 @@
 package routes
 
 import (
-	"database/sql"
 	"net/http"
 
 	"akastra-mobile-api/src/app/usecase"
@@ -9,9 +8,10 @@ import (
 	"akastra-mobile-api/src/interface/handler"
 
 	"github.com/go-chi/chi/v5"
+	"gorm.io/gorm"
 )
 
-func InitRouter(db *sql.DB) http.Handler {
+func InitRouter(db *gorm.DB) http.Handler {
 	r := chi.NewRouter()
 
 	userRepo := repositories.NewUserRepository(db)

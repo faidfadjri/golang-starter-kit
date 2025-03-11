@@ -1,16 +1,17 @@
 package database
 
 import (
-	"database/sql"
 	"fmt"
 	"log"
 	"os"
 
-	_ "github.com/go-sql-driver/mysql"
 	"github.com/joho/godotenv"
+	"gorm.io/driver/mysql"
+	"gorm.io/gorm"
+	"gorm.io/gorm/logger"
 )
 
-func ConnectDB() (*sql.DB, error) {
+func ConnectDB() (*gorm.DB, error) {
 	err := godotenv.Load()
 	if err != nil {
 		log.Println("Error loading .env file")
@@ -23,12 +24,10 @@ func ConnectDB() (*sql.DB, error) {
 
 	// Create DSN
 	dsn := fmt.Sprintf("%s:%s@tcp(%s)/%s?parseTime=true", dbUser, dbPass, dbHost, dbName)
-	db, err := sql.Open("mysql", dsn)
-	if err != nil {
-		return nil, err
-	}
 
-	err = db.Ping()
+	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{
+		Logger: logger.Default.LogMode(logger.Info), // Enables GORM logging
+	})
 	if err != nil {
 		return nil, err
 	}

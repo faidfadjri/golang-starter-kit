@@ -8,3 +8,5 @@
 2025/03/11 10:48:21 user_handler.go:83: ERROR: Failed to create user: Error 1364 (HY000): Field 'id' doesn't have a default value
 2025/03/11 13:15:55 user_handler.go:83: ERROR: Failed to create user: Error 1364 (HY000): Field 'id' doesn't have a default value
 2025/03/11 13:16:10 user_handler.go:89: INFO: User created successfully - Name: faidfadjristudio, Email: faidfadjri@gmail.com
+2025/03/11 15:13:50 user_handler.go:89: INFO: User created successfully - Name: faidfadjristudio, Email: faidfadjri@gmail.com
+2025/03/11 15:14:05 user_handler.go:46: ERROR: User not found: record not found

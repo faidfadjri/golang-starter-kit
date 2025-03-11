@@ -1,0 +1,8 @@
+2025/03/11 10:40:29 user_handler.go:55: ERROR: Invalid request body
+2025/03/11 10:40:30 user_handler.go:55: ERROR: Invalid request body
+2025/03/11 10:40:37 user_handler.go:55: ERROR: Invalid request body
+2025/03/11 10:41:21 user_handler.go:77: ERROR: Failed to create user: Error 1364 (HY000): Field 'id' doesn't have a default value
+2025/03/11 10:41:23 user_handler.go:77: ERROR: Failed to create user: Error 1364 (HY000): Field 'id' doesn't have a default value
+2025/03/11 10:43:58 user_handler.go:77: ERROR: Failed to create user: Error 1364 (HY000): Field 'id' doesn't have a default value
+2025/03/11 10:44:08 user_handler.go:86: INFO: User created successfully - Name: faidfadjri, Email: faidfadjri@gmail.com
+2025/03/11 10:48:21 user_handler.go:83: ERROR: Failed to create user: Error 1364 (HY000): Field 'id' doesn't have a default value

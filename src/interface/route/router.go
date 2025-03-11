@@ -14,7 +14,7 @@ import (
 func InitRouter(db *sql.DB) http.Handler {
 	r := chi.NewRouter()
 
-	userRepo := repositories.NewUserRepository(db)
+	userRepo    := repositories.NewUserRepository(db)
 	userUsecase := usecase.NewUserUsecase(userRepo)
 	userHandler := handler.NewUserHandler(userUsecase)
 

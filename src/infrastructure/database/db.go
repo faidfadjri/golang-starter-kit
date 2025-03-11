@@ -11,13 +11,11 @@ import (
 )
 
 func ConnectDB() (*sql.DB, error) {
-	// Load environment variables
 	err := godotenv.Load()
 	if err != nil {
 		log.Println("Error loading .env file")
 	}
 
-	// Get DB credentials from .env
 	dbHost := os.Getenv("DB_HOST")
 	dbUser := os.Getenv("DB_USER")
 	dbPass := os.Getenv("DB_PASS")
@@ -30,12 +28,10 @@ func ConnectDB() (*sql.DB, error) {
 		return nil, err
 	}
 
-	// Ping database to check connection
 	err = db.Ping()
 	if err != nil {
 		return nil, err
 	}
 
-	fmt.Println("Connected to MySQL database!")
 	return db, nil
 }

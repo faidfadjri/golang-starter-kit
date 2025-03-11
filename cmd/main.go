@@ -7,7 +7,7 @@ import (
 	"os"
 
 	"akastra-mobile-api/src/infrastructure/database"
-	"akastra-mobile-api/src/interface/route"
+	"akastra-mobile-api/src/interface/routes"
 )
 
 
@@ -28,7 +28,7 @@ func main() {
 		log.Fatal("Failed to connect to database:", err)
 	}
 
-	router := route.InitRouter(db)
+	router := routes.InitRouter(db)
 	port := os.Getenv("PORT")
 
 	fmt.Println("Server running on port", port)

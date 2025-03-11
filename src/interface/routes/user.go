@@ -1,4 +1,4 @@
-package route
+package routes
 
 import (
 	"akastra-mobile-api/src/interface/handler"

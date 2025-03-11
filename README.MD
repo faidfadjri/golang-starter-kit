@@ -3,17 +3,19 @@
 ### Folder Structure
 
 ```
+______________________________________________________________________
+
 📁akastra-mobile-api
 │── 📁cmd
-│   └── main.go                         // -- Entry Point
+│   └── main.go
 │── 📁src
-│   ├── 📁app                          // -- Business Logic
+│   ├── 📁app
 │   │   ├── 📁entities
 │   │   ├── 📁usecase
-│   ├── 📁infrastructure               // -- External Dependencies
+│   ├── 📁infrastructure
 │   │   ├── 📁database
 │   │   ├── 📁repositories
-│   ├── 📁interface                    // -- Request in and out
+│   ├── 📁interface
 │   │   ├── 📁handler
 │   │   ├── 📁response
 │   │   ├── 📁route
@@ -23,4 +25,8 @@
 │── go.sum
 │── log.txt
 │── README.MD
+______________________________________________________________________
+
+Flow :
+Route -> Handler -> Use Case -> Repositories -> Database -> Response
 ```

@@ -25,7 +25,7 @@ func (r *userRepository) GetAllUsers() ([]entities.User, error) {
 		return nil, err
 	}
 	defer rows.Close()
-
+	
 	var users []entities.User
 	for rows.Next() {
 		var user entities.User

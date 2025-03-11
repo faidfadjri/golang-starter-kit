@@ -29,10 +29,7 @@ func main() {
 	}
 
 	router := route.InitRouter(db)
-	port := os.Getenv("APP_PORT")
-	if port == "" {
-		port = "3000"
-	}
+	port := os.Getenv("PORT")
 
 	fmt.Println("Server running on port", port)
 	log.Fatal(http.ListenAndServe(":"+port, router))

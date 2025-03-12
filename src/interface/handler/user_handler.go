@@ -20,7 +20,6 @@ func NewUserHandler(userUsecase usecase.UserUsecase) *UserHandler {
 	return &UserHandler{userUsecase}
 }
 
-// ✅ GET ALL USERS
 func (h *UserHandler) GetAllUsers(w http.ResponseWriter, r *http.Request) {
 	users, err := h.userUsecase.GetAllUsers()
 	if err != nil {
@@ -32,7 +31,6 @@ func (h *UserHandler) GetAllUsers(w http.ResponseWriter, r *http.Request) {
 	response.JSONResponse(w, http.StatusOK, response.NewSuccessResponse("Users retrieved successfully", users))
 }
 
-// ✅ GET USER BY ID
 func (h *UserHandler) GetUserByID(w http.ResponseWriter, r *http.Request) {
 	id, err := strconv.Atoi(chi.URLParam(r, "id"))
 	if err != nil {
@@ -51,11 +49,10 @@ func (h *UserHandler) GetUserByID(w http.ResponseWriter, r *http.Request) {
 	response.JSONResponse(w, http.StatusOK, response.NewSuccessResponse("User retrieved successfully", user))
 }
 
-// ✅ CREATE USER
 func (h *UserHandler) CreateUser(w http.ResponseWriter, r *http.Request) {
 	var payload entities.UserPayload
 
-	// Decode JSON request
+	// Parse request body
 	err := json.NewDecoder(r.Body).Decode(&payload)
 	if err != nil {
 		log.Println("ERROR: Invalid request body:", err)
@@ -63,8 +60,8 @@ func (h *UserHandler) CreateUser(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Validasi input
-	if payload.Name == "" || payload.Email == "" || payload.Password == "" {
+	// Inpout Validation
+	if payload.Fullname == "" || payload.Email == "" || payload.Password == "" {
 		log.Println("ERROR: Missing required fields")
 		response.JSONResponse(w, http.StatusBadRequest, response.NewErrorResponse("All fields are required", nil))
 		return
@@ -72,7 +69,7 @@ func (h *UserHandler) CreateUser(w http.ResponseWriter, r *http.Request) {
 
 	// Buat objek User
 	user := entities.User{
-		Name:     payload.Name,
+		Name:     payload.Fullname,
 		Email:    payload.Email,
 		Password: payload.Password,
 	}
@@ -85,9 +82,6 @@ func (h *UserHandler) CreateUser(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Logging sukses
 	log.Printf("INFO: User created successfully - Name: %s, Email: %s\n", user.Name, user.Email)
-
-	// Response sukses
 	response.JSONResponse(w, http.StatusCreated, response.NewSuccessResponse("User created successfully", user))
 }

@@ -2,7 +2,7 @@ package usecase
 
 import (
 	"akastra-mobile-api/src/app/entities"
-	"akastra-mobile-api/src/infrastructure/models"
+	"akastra-mobile-api/src/infrastructure/database/models"
 	"akastra-mobile-api/src/infrastructure/repositories"
 )
 

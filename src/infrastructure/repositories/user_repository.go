@@ -2,7 +2,7 @@ package repositories
 
 import (
 	"akastra-mobile-api/src/app/entities"
-	"akastra-mobile-api/src/infrastructure/models"
+	"akastra-mobile-api/src/infrastructure/database/models"
 
 	"gorm.io/gorm"
 )

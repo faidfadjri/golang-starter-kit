@@ -16,6 +16,7 @@ type userUsecase struct {
 	userRepo repositories.UserRepository
 }
 
+// @constructor
 func NewUserUsecase(userRepo repositories.UserRepository) UserUsecase {
 	return &userUsecase{userRepo: userRepo}
 }

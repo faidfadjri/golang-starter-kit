@@ -10,9 +10,9 @@ import (
 func UserRouter(h *handler.UserHandler) http.Handler {
 	r := chi.NewRouter()
 
-	r.Get("/", h.GetAllUsers)        // GET /api/v1/users
-	r.Get("/{id}", h.GetUserByID)     // GET /api/v1/users/{id}
-	r.Post("/", h.CreateUser)        // POST /api/v1/users
+	r.Get("/", h.GetAllUsers)       
+	r.Get("/{id}", h.GetUserByID)   
+	r.Post("/", h.CreateUser)    
 
 	return r
 }

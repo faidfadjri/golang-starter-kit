@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"os"
 
-	"akastra-mobile-api/src/infrastructure/database"
+	"akastra-mobile-api/src/app/bootstrap"
 	"akastra-mobile-api/src/interface/routes"
 )
 
@@ -23,12 +23,9 @@ func initLogger() {
 
 func main() {
 	initLogger()
-	db, err := database.ConnectDB()
-	if err != nil {
-		log.Fatal("Failed to connect to database:", err)
-	}
+	deps := bootstrap.InitDependencies()
 
-	router := routes.InitRouter(db)
+	router := routes.InitRouter(deps)
 	port := os.Getenv("PORT")
 
 	fmt.Println("Server running on port", port)

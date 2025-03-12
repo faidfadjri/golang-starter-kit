@@ -12,3 +12,4 @@
 2025/03/11 15:14:05 user_handler.go:46: ERROR: User not found: record not found
 2025/03/12 09:14:05 bootstrap.go:18: Failed to connect to database:dial tcp [::1]:3306: connectex: No connection could be made because the target machine actively refused it.
 2025/03/12 09:14:16 bootstrap.go:18: Failed to connect to database:dial tcp [::1]:3306: connectex: No connection could be made because the target machine actively refused it.
+2025/03/12 13:47:22 user_handler.go:44: ERROR: User not found: invalid field found for struct akastra-mobile-api/src/infrastructure/database/models/users.User's field Role: define a valid foreign key for relations or implement the Valuer/Scanner interface

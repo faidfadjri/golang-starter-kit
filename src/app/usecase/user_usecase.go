@@ -2,13 +2,13 @@ package usecase
 
 import (
 	"akastra-mobile-api/src/app/entities"
-	"akastra-mobile-api/src/infrastructure/database/models"
+	"akastra-mobile-api/src/infrastructure/database/models/users"
 	"akastra-mobile-api/src/infrastructure/repositories"
 )
 
 type UserUsecase interface {
-	GetAllUsers() ([]models.User, error)
-	GetUserByID(id int) (*models.User, error)
+	GetAllUsers() ([]users.User, error)
+	GetUserByID(id int) (*users.User, error)
 	CreateUser(user entities.User) error
 }
 
@@ -21,11 +21,11 @@ func NewUserUsecase(userRepo repositories.UserRepository) UserUsecase {
 	return &userUsecase{userRepo: userRepo}
 }
 
-func (u *userUsecase) GetAllUsers() ([]models.User, error) {
+func (u *userUsecase) GetAllUsers() ([]users.User, error) {
 	return u.userRepo.GetAllUsers()
 }
 
-func (u *userUsecase) GetUserByID(id int) (*models.User, error) {
+func (u *userUsecase) GetUserByID(id int) (*users.User, error) {
 	return u.userRepo.GetUserByID(id)
 }
 

@@ -2,14 +2,14 @@ package repositories
 
 import (
 	"akastra-mobile-api/src/app/entities"
-	"akastra-mobile-api/src/infrastructure/database/models"
+	"akastra-mobile-api/src/infrastructure/database/models/users"
 
 	"gorm.io/gorm"
 )
 
 type UserRepository interface {
-	GetAllUsers() ([]models.User, error)
-	GetUserByID(id int) (*models.User, error)
+	GetAllUsers() ([]users.User, error)
+	GetUserByID(id int) (*users.User, error)
 	CreateUser(user entities.User) error
 }
 
@@ -21,14 +21,14 @@ func NewUserRepository(db *gorm.DB) UserRepository {
 	return &userRepository{db: db}
 }
 
-func (r *userRepository) GetAllUsers() ([]models.User, error) {
-	var users []models.User
+func (r *userRepository) GetAllUsers() ([]users.User, error) {
+	var users []users.User
 	err := r.db.Find(&users).Error
 	return users, err
 }
 
-func (r *userRepository) GetUserByID(id int) (*models.User, error) {
-	var user models.User
+func (r *userRepository) GetUserByID(id int) (*users.User, error) {
+	var user users.User
 	err := r.db.First(&user, id).Error
 	if err != nil {
 		return nil, err

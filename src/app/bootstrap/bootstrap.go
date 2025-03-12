@@ -10,6 +10,7 @@ import (
 
 type Dependencies struct {
 	UserHandler *handler.UserHandler
+	AuthHandler *handler.AuthHandler
 }
 
 func InitDependencies() *Dependencies {
@@ -22,7 +23,12 @@ func InitDependencies() *Dependencies {
 	userUsecase := usecase.NewUserUsecase(userRepo)
 	userHandler := handler.NewUserHandler(userUsecase)
 
+	authRepo := repositories.NewAuthRepository(db)
+	authUsecase := usecase.NewAuthUsecase(authRepo)
+	authHandler := handler.NewAuthHandler(authUsecase)
+
 	return &Dependencies{
 		UserHandler: userHandler,
+		AuthHandler: authHandler,
 	}
 }

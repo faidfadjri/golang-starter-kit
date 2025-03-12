@@ -50,7 +50,8 @@ func (h *UserHandler) GetUserByID(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *UserHandler) CreateUser(w http.ResponseWriter, r *http.Request) {
-	var payload entities.UserPayload
+	
+	var payload entities.UserRegisterPayload
 
 	// Parse request body
 	err := json.NewDecoder(r.Body).Decode(&payload)

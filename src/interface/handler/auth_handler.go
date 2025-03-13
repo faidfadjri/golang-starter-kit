@@ -2,11 +2,9 @@ package handler
 
 import (
 	"encoding/json"
-	"errors"
 	"fmt"
 	"log"
 	"net/http"
-	"strings"
 
 	"akastra-mobile-api/src/app/entities"
 	"akastra-mobile-api/src/app/usecase"
@@ -21,7 +19,7 @@ type AuthHandler struct {
 }
 
 func NewAuthHandler(authUsecase usecase.AuthUsecase) *AuthHandler {
-	return &AuthHandler{authUsecase: authUsecase}
+	return &AuthHandler{authUsecase: authUsecase, validate: validator.New()}
 }
 
 func (h *AuthHandler) Login(w http.ResponseWriter, r *http.Request) {
@@ -32,30 +30,26 @@ func (h *AuthHandler) Login(w http.ResponseWriter, r *http.Request) {
 func (h *AuthHandler) Register(w http.ResponseWriter, r *http.Request) {
 	var payload entities.UserRegisterPayload
 
+	defer func() {
+		if r := recover(); r != nil {
+			log.Println("ERROR: Panic occurred:", r)
+			response.JSONResponse(w, http.StatusInternalServerError, response.NewErrorResponse("Internal server error", nil))
+		}
+	}()
+
 	if err := json.NewDecoder(r.Body).Decode(&payload); err != nil {
 		log.Println("ERROR: Invalid request body:", err)
 		response.JSONResponse(w, http.StatusBadRequest, response.NewErrorResponse("Invalid request body", err))
 		return
 	}
 
-	err := h.validate.Struct(payload)
-	if err != nil {
-		var invalidValidationError *validator.InvalidValidationError
-		if errors.As(err, &invalidValidationError) {
-			log.Println("ERROR: Invalid validation error:", err)
-			response.JSONResponse(w, http.StatusInternalServerError, response.NewErrorResponse("Internal server error", nil))
-			return
-		}
+	if err := h.validate.Struct(payload); err != nil {
+		if validationErrs, ok := err.(validator.ValidationErrors); ok {
+			firstError := validationErrs[0]
+			errorMessage := fmt.Sprintf("Field '%s':%s", firstError.Field(), firstError.Tag())
 	
-		var validationErrors []string
-		var validateErrs validator.ValidationErrors
-		if errors.As(err, &validateErrs) {
-			for _, e := range validateErrs {
-				validationErrors = append(validationErrors, fmt.Sprintf("Field '%s' failed validation: %s", e.Field(), e.Tag()))
-			}
-	
-			log.Println("ERROR: Validation failed:", validationErrors)
-			response.JSONResponse(w, http.StatusBadRequest, response.NewErrorResponse("Validation failed", errors.New(strings.Join(validationErrors, "; "))))
+			log.Println("ERROR: Validation failed:", errorMessage)
+			response.JSONResponse(w, http.StatusBadRequest, response.NewErrorResponse(errorMessage, nil))
 			return
 		}
 	
@@ -63,6 +57,7 @@ func (h *AuthHandler) Register(w http.ResponseWriter, r *http.Request) {
 		response.JSONResponse(w, http.StatusBadRequest, response.NewErrorResponse("Invalid request body", err))
 		return
 	}
+	
 
 	registeredUser, err := h.authUsecase.Register(payload)
 	if err != nil {
@@ -71,20 +66,12 @@ func (h *AuthHandler) Register(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	responseData := struct {
-		Fullname string  `json:"fullname"`
-		Username *string `json:"username,omitempty"`
-		Email    string  `json:"email"`
-		Phone    string  `json:"phone"`
-		Address  string  `json:"address"`
-		Avatar   string  `json:"avatar"`
-	}{
+	responseData := entities.UserRegisterPayload{
 		Fullname: registeredUser.Fullname,
 		Username: registeredUser.Username,
 		Email:    registeredUser.Email,
 		Phone:    registeredUser.Phone,
 		Address:  registeredUser.Address,
-		Avatar:   registeredUser.Avatar,
 	}
 
 	response.JSONResponse(w, http.StatusCreated, response.NewSuccessResponse("User registered successfully", responseData))

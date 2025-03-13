@@ -8,13 +8,13 @@ type User struct {
 }
 
 type UserRegisterPayload struct {
-	Fullname string  `json:"fullname"`
+	Fullname string  `json:"fullname" validate:"required"`
 	Username *string `json:"username,omitempty"`
-	Email    string  `json:"email"`
-	Password string  `json:"password"`
-	Phone    string  `json:"phone"`
+	Email    string  `json:"email" validate:"required,email"`
+	Password string  `json:"password" validate:"required,min=8"`
+	Phone    string  `json:"phone" validate:"required"`
 	Address  string  `json:"address"`
-	Avatar   string  `json:"avatar"`
+	Avatar   *string `json:"avatar,omitempty"`
 	RoleId   *int    `json:"role_id,omitempty"`
 }
 

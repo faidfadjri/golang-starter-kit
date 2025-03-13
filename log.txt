@@ -1,3 +1,16 @@
-2025/03/12 15:06:01 auth_handler.go:25: ERROR: Invalid request body: json: cannot unmarshal string into Go struct field UserRegisterPayload.role_id of type int
-2025/03/12 15:12:29 auth_handler.go:38: ERROR: Failed to register user: Error 1062 (23000): Duplicate entry 'johndoe@example.com' for key 'users.users_email_unique'
-2025/03/13 08:45:40 main.go:32: listen tcp :5000: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted.
+2025/03/13 08:55:23 auth_handler.go:43: ERROR: Invalid request body: invalid character '}' looking for beginning of object key string
+2025/03/13 08:55:26 auth_handler.go:76: ERROR: Failed to register user: Error 1062 (23000): Duplicate entry 'johndoe@example.com' for key 'users.users_email_unique'
+2025/03/13 08:59:41 auth_handler.go:65: ERROR: Validation failed: [Field 'Fullname' failed validation: required Field 'Username' failed validation: required Field 'Email' failed validation: required Field 'Password' failed validation: required Field 'Phone' failed validation: required Field 'Avatar' failed validation: required Field 'RoleId' failed validation: gte]
+2025/03/13 08:59:44 auth_handler.go:65: ERROR: Validation failed: [Field 'Fullname' failed validation: required Field 'Username' failed validation: required Field 'Email' failed validation: required Field 'Password' failed validation: required Field 'Phone' failed validation: required Field 'Avatar' failed validation: required Field 'RoleId' failed validation: gte]
+2025/03/13 08:59:45 auth_handler.go:65: ERROR: Validation failed: [Field 'Fullname' failed validation: required Field 'Username' failed validation: required Field 'Email' failed validation: required Field 'Password' failed validation: required Field 'Phone' failed validation: required Field 'Avatar' failed validation: required Field 'RoleId' failed validation: gte]
+2025/03/13 09:04:58 auth_handler.go:64: ERROR: Validation failed: [Field 'Fullname' failed validation: required Field 'Email' failed validation: required Field 'Password' failed validation: required]
+2025/03/13 09:07:08 auth_handler.go:76: ERROR: Failed to register user: Error 1062 (23000): Duplicate entry 'johndoe@example.com' for key 'users.users_email_unique'
+2025/03/13 09:07:31 auth_handler.go:64: ERROR: Validation failed: [Field 'Fullname' failed validation: required Field 'Email' failed validation: required Field 'Password' failed validation: required]
+2025/03/13 09:09:16 auth_handler.go:51: ERROR: Validation failed: Field 'Fullname' failed validation: required
+2025/03/13 09:09:43 auth_handler.go:51: ERROR: Validation failed: Field 'Fullname' required
+2025/03/13 09:09:50 auth_handler.go:51: ERROR: Validation failed: Field 'Fullname' required
+2025/03/13 09:09:52 auth_handler.go:51: ERROR: Validation failed: Field 'Fullname':required
+2025/03/13 09:09:57 auth_handler.go:51: ERROR: Validation failed: Field 'Fullname':required
+2025/03/13 09:09:59 auth_handler.go:51: ERROR: Validation failed: Field 'Fullname': required
+2025/03/13 09:10:02 auth_handler.go:51: ERROR: Validation failed: Field 'Fullname': required
+2025/03/13 09:10:05 auth_handler.go:51: ERROR: Validation failed: Field 'Fullname':required

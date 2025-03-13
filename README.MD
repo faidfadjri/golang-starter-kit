@@ -60,6 +60,12 @@ cp .env.example .env
 
 > make sure to fill the required variable `DB_HOST`, `DB_NAME`, `DB_USER`, `DB_PASS`
 
+Database migration using `gorm automigrate`
+
+```
+go run migration.go
+```
+
 Install `air-verse` (if it doesn't exist)
 
 ```bash
@@ -78,4 +84,4 @@ Running `air-verse`
 air
 ```
 
-Now, the awesome project is completely running
+Now, the awesome project is completely running 🎉

@@ -1,1 +1,2 @@
 2025/03/12 15:06:01 auth_handler.go:25: ERROR: Invalid request body: json: cannot unmarshal string into Go struct field UserRegisterPayload.role_id of type int
+2025/03/12 15:12:29 auth_handler.go:38: ERROR: Failed to register user: Error 1062 (23000): Duplicate entry 'johndoe@example.com' for key 'users.users_email_unique'

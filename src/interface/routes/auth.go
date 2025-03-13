@@ -11,6 +11,6 @@ func AuthRouter(a *handler.AuthHandler) http.Handler {
 	r := chi.NewRouter()
 
 	r.Post("/register", a.Register)    
-
+	r.Post("/login", a.Login)
 	return r
 }

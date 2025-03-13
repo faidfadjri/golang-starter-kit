@@ -10,13 +10,14 @@
 
 Akastra Mobile API is the core API of the Akastra Mobile App, built using Go (Golang) with several dependencies such as:
 
-| Dependency                                   | Description                                    | Link                                       |
-| -------------------------------------------- | ---------------------------------------------- | ------------------------------------------ |
-| [go-chi](https://github.com/go-chi/chi)      | Lightweight, idiomatic web router for Go.      | [GitHub](https://github.com/go-chi/chi)    |
-| [GORM](https://gorm.io/)                     | The ORM for database interactions in Go.       | [Website](https://gorm.io/)                |
-| [Air](https://github.com/cosmtrek/air)       | Live reloading for Go applications.            | [GitHub](https://github.com/cosmtrek/air)  |
-| [godotenv](https://github.com/joho/godotenv) | Load environment variables from a `.env` file. | [GitHub](https://github.com/joho/godotenv) |
-| [MySQL](https://www.mysql.com/)              | The primary database used in the project.      | [Website](https://www.mysql.com/)          |
+| Dependency                                                            | Description                                                 | Link                                                 |
+| --------------------------------------------------------------------- | ----------------------------------------------------------- | ---------------------------------------------------- |
+| [go-chi](https://github.com/go-chi/chi)                               | Lightweight, idiomatic web router for Go.                   | [GitHub](https://github.com/go-chi/chi)              |
+| [GORM](https://gorm.io/)                                              | The ORM for database interactions in Go.                    | [Website](https://gorm.io/)                          |
+| [Air](https://github.com/cosmtrek/air)                                | Live reloading for Go applications.                         | [GitHub](https://github.com/cosmtrek/air)            |
+| [godotenv](https://github.com/joho/godotenv)                          | Load environment variables from a `.env` file.              | [GitHub](https://github.com/joho/godotenv)           |
+| [MySQL](https://www.mysql.com/)                                       | The primary database used in the project.                   | [Website](https://www.mysql.com/)                    |
+| [go-playground/validator](https://github.com/go-playground/validator) | validations for structs and individual fields based on tags | [Github](https://github.com/go-playground/validator) |
 
 ## Structure
 

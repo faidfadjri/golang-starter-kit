@@ -2,6 +2,7 @@ package usecase
 
 import (
 	"akastra-mobile-api/src/app/entities"
+	"akastra-mobile-api/src/infrastructure/database/models/users"
 	"akastra-mobile-api/src/infrastructure/repositories"
 	"regexp"
 	"strings"
@@ -9,6 +10,7 @@ import (
 
 type AuthUsecase interface {
 	Register(entities.UserRegisterPayload) (entities.UserRegisterPayload, error)
+	Login(entities.UserCredentials) (users.User, error)
 }
 
 type authUseCase struct {
@@ -32,6 +34,14 @@ func (r *authUseCase) Register(user entities.UserRegisterPayload) (entities.User
 		return entities.UserRegisterPayload{}, err
 	}
 	return user, nil
+}
+
+func (r *authUseCase) Login(user entities.UserCredentials) (users.User, error) {
+	validatedUser, err := r.authRepo.Login(user)
+	if err != nil {
+		return users.User{}, err
+	}
+	return validatedUser, nil
 }
 
 func generateUsername(fullname string) string {

@@ -18,9 +18,9 @@ type UserRegisterPayload struct {
 	RoleId   *int    `json:"role_id,omitempty"`
 }
 
-type UserLoginPayload struct {
-	EmailOrUsername string `json:"email_or_username"`
-	Password        string `json:"password"`
+type UserCredentials struct {
+	EmailOrUsername string `json:"email_or_username" validate:"required"`
+	Password        string `json:"password" validate:"required"`
 }
 
 func (UserRegisterPayload) TableName() string {

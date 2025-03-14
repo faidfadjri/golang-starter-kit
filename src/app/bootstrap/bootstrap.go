@@ -9,7 +9,6 @@ import (
 )
 
 type Dependencies struct {
-	UserHandler *handler.UserHandler
 	AuthHandler *handler.AuthHandler
 }
 
@@ -18,17 +17,12 @@ func InitDependencies() *Dependencies {
 	if err != nil {
 		log.Fatal("Failed to connect to database:", err)
 	}
-	
-	userRepo := repositories.NewUserRepository(db)
-	userUsecase := usecase.NewUserUsecase(userRepo)
-	userHandler := handler.NewUserHandler(userUsecase)
 
 	authRepo := repositories.NewAuthRepository(db)
 	authUsecase := usecase.NewAuthUsecase(authRepo)
 	authHandler := handler.NewAuthHandler(authUsecase)
 
 	return &Dependencies{
-		UserHandler: userHandler,
 		AuthHandler: authHandler,
 	}
 }

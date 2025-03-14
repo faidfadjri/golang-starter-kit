@@ -2,6 +2,7 @@ package repositories
 
 import (
 	"akastra-mobile-api/src/app/entities"
+	"fmt"
 
 	"gorm.io/gorm"
 )
@@ -20,6 +21,11 @@ func NewAuthRepository(db *gorm.DB) AuthRepository {
 }
 
 func (r *authRepository) Register(user entities.UserRegisterPayload) (entities.UserRegisterPayload, error) {
+	var existingUser entities.UserRegisterPayload
+	if err := r.db.Where("email = ?", user.Email).First(&existingUser).Error; err == nil {
+		return entities.UserRegisterPayload{}, fmt.Errorf("email already exists")
+	}
+
 	if err := r.db.Create(&user).Error; err != nil {
 		return entities.UserRegisterPayload{}, err
 	}

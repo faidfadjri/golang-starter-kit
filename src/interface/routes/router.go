@@ -10,7 +10,6 @@ import (
 func InitRouter(deps *bootstrap.Dependencies) http.Handler {
 	r := chi.NewRouter()
 	r.Route("/api/v1", func(api chi.Router) {
-		api.Mount("/users", UserRouter(deps.UserHandler))
 		api.Mount("/auth", AuthRouter(deps.AuthHandler))
 	})
 

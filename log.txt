@@ -14,3 +14,6 @@
 2025/03/13 09:09:59 auth_handler.go:51: ERROR: Validation failed: Field 'Fullname': required
 2025/03/13 09:10:02 auth_handler.go:51: ERROR: Validation failed: Field 'Fullname': required
 2025/03/13 09:10:05 auth_handler.go:51: ERROR: Validation failed: Field 'Fullname':required
+2025/03/14 07:57:45 bootstrap.go:18: Failed to connect to database:dial tcp [::1]:3306: connectex: No connection could be made because the target machine actively refused it.
+2025/03/14 07:59:31 auth_handler.go:64: ERROR: Failed to register user: Error 1062 (23000): Duplicate entry 'johndoe@example.com' for key 'users.users_email_unique'
+2025/03/14 08:01:45 auth_handler.go:64: ERROR: Failed to register user: email already exists

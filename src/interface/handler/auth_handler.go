@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"akastra-mobile-api/src/app/entities"
-	"akastra-mobile-api/src/app/usecase"
+	auth "akastra-mobile-api/src/app/usecase/auth"
 	jwtutil "akastra-mobile-api/src/infrastructure/jwt"
 	"akastra-mobile-api/src/interface/response"
 
@@ -16,11 +16,11 @@ import (
 )
 
 type AuthHandler struct {
-	authUsecase usecase.AuthUsecase
+	authUsecase auth.AuthUsecase
 	validate *validator.Validate
 }
 
-func NewAuthHandler(authUsecase usecase.AuthUsecase) *AuthHandler {
+func NewAuthHandler(authUsecase auth.AuthUsecase) *AuthHandler {
 	return &AuthHandler{authUsecase: authUsecase, validate: validator.New()}
 }
 

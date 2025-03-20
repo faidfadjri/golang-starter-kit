@@ -1,9 +1,9 @@
-package usecase
+package auth
 
 import (
 	"akastra-mobile-api/src/app/entities"
 	"akastra-mobile-api/src/infrastructure/database/models/users"
-	"akastra-mobile-api/src/infrastructure/repositories"
+	auth "akastra-mobile-api/src/infrastructure/repositories/auth"
 	"regexp"
 	"strings"
 )
@@ -14,10 +14,10 @@ type AuthUsecase interface {
 }
 
 type authUseCase struct {
-	authRepo repositories.AuthRepository
+	authRepo auth.AuthRepository
 }
 
-func NewAuthUsecase(authRepo repositories.AuthRepository) AuthUsecase {
+func NewAuthUsecase(authRepo auth.AuthRepository) AuthUsecase {
 	return &authUseCase{authRepo: authRepo}
 }
 

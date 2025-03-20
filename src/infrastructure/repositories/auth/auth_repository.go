@@ -1,4 +1,4 @@
-package repositories
+package auth
 
 import (
 	"akastra-mobile-api/src/app/entities"

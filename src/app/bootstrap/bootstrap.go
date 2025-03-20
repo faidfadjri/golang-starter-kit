@@ -1,9 +1,9 @@
 package bootstrap
 
 import (
-	"akastra-mobile-api/src/app/usecase"
+	auth "akastra-mobile-api/src/app/usecase/auth"
 	"akastra-mobile-api/src/infrastructure/database"
-	"akastra-mobile-api/src/infrastructure/repositories"
+	repositoriesauth "akastra-mobile-api/src/infrastructure/repositories/auth"
 	"akastra-mobile-api/src/interface/handler"
 	"log"
 )
@@ -18,8 +18,8 @@ func InitDependencies() *Dependencies {
 		log.Fatal("Failed to connect to database:", err)
 	}
 
-	authRepo := repositories.NewAuthRepository(db)
-	authUsecase := usecase.NewAuthUsecase(authRepo)
+	authRepo := repositoriesauth.NewAuthRepository(db)
+	authUsecase := auth.NewAuthUsecase(authRepo)
 	authHandler := handler.NewAuthHandler(authUsecase)
 
 	return &Dependencies{

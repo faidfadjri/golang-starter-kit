@@ -13,3 +13,7 @@
 2025/03/14 09:24:27 auth_handler.go:57: ERROR: Failed to login user: user not found
 2025/03/14 09:24:27 server.go:3634: http: superfluous response.WriteHeader call from akastra-mobile-api/src/interface/response.JSONResponse (response.go:42)
 2025/03/14 09:27:55 auth_handler.go:57: ERROR: Failed to login user: user not found
+2025/03/20 07:59:21 bootstrap.go:18: Failed to connect to database:dial tcp [::1]:3306: connectex: No connection could be made because the target machine actively refused it.
+2025/03/20 08:00:45 bootstrap.go:18: Failed to connect to database:dial tcp [::1]:3306: connectex: No connection could be made because the target machine actively refused it.
+2025/03/20 08:00:53 bootstrap.go:18: Failed to connect to database:dial tcp [::1]:3306: connectex: No connection could be made because the target machine actively refused it.
+2025/03/20 08:01:05 bootstrap.go:18: Failed to connect to database:dial tcp [::1]:3306: connectex: No connection could be made because the target machine actively refused it.

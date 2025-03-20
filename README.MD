@@ -23,7 +23,7 @@ Akastra Mobile API is the core API of the Akastra Mobile App, built using Go (Go
 ```
 ______________________________________________________________________
 
-📁akastra-mobile-api
+📁root folder
 │── 📁cmd
 │   └── main.go --> Entry point
 │── 📁src

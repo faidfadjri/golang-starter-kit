@@ -13,6 +13,7 @@ func InitRouter(deps *bootstrap.Dependencies) http.Handler {
 	r.Route("/api/v1", func(api chi.Router) {
 		r.Use(middleware.RateLimiter())
 		api.Mount("/auth", AuthRouter(deps.AuthHandler))
+		api.With(middleware.AuthMiddleware).Mount("/blog", BlogRouter(deps.BlogHandler))
 	})
 
 	return r

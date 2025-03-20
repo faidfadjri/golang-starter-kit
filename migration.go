@@ -2,6 +2,7 @@ package main
 
 import (
 	"akastra-mobile-api/src/infrastructure/database"
+	"akastra-mobile-api/src/infrastructure/database/models/blog"
 	"akastra-mobile-api/src/infrastructure/database/models/users"
 	"fmt"
 	"log"
@@ -29,5 +30,7 @@ func migrate(db *gorm.DB) error {
 	return db.AutoMigrate(
 		&users.User{},
 		&users.UserRole{},
+		&blog.Article{},
+		&blog.ArticleCategory{},
 	)
 }

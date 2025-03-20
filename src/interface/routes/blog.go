@@ -7,9 +7,9 @@ import (
 	"github.com/go-chi/chi/v5"
 )
 
-func BlogRouter(a *handler.AuthHandler) http.Handler {
+func BlogRouter(b *handler.BlogHandler) http.Handler {
 	r := chi.NewRouter()
 
-	r.Get("/blog", a.Register)    
+	r.Get("/", b.GetArticles)    
 	return r
 }

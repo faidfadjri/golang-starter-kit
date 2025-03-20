@@ -1,4 +1,4 @@
-package blogs
+package blog
 
 type ArticleCategory struct {
 	ID        uint64 `gorm:"primaryKey;autoIncrement;column:id"`

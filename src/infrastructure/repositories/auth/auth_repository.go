@@ -9,11 +9,6 @@ import (
 	"gorm.io/gorm"
 )
 
-type AuthRepository interface {
-	Register(user entities.UserRegisterPayload) (entities.UserRegisterPayload, error)
-	Login(user entities.UserCredentials) (users.User, error)
-}
-
 type authRepository struct {
 	db *gorm.DB
 }

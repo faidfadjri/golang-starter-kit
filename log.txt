@@ -29,3 +29,4 @@
 2025/03/20 08:38:07 server.go:3634: http: superfluous response.WriteHeader call from akastra-mobile-api/src/interface/response.JSONResponse (response.go:42)
 2025/03/20 08:38:08 server.go:3634: http: superfluous response.WriteHeader call from akastra-mobile-api/src/interface/response.JSONResponse (response.go:42)
 2025/03/20 08:38:09 server.go:3634: http: superfluous response.WriteHeader call from akastra-mobile-api/src/interface/response.JSONResponse (response.go:42)
+2025/03/20 13:41:47 auth_handler.go:59: ERROR: Failed to login user: user not found

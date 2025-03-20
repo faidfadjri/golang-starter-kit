@@ -8,11 +8,6 @@ import (
 	"strings"
 )
 
-type AuthUsecase interface {
-	Register(entities.UserRegisterPayload) (entities.UserRegisterPayload, error)
-	Login(entities.UserCredentials) (users.User, error)
-}
-
 type authUseCase struct {
 	authRepo auth.AuthRepository
 }

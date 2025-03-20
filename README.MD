@@ -16,7 +16,7 @@ Akastra Mobile API is the core API of the Akastra Mobile App, built using Go (Go
 | [godotenv](https://github.com/joho/godotenv)                          | Load environment variables from a `.env` file.              | [GitHub](https://github.com/joho/godotenv)           |
 | [MySQL](https://www.mysql.com/)                                       | The primary database used in the project.                   | [Website](https://www.mysql.com/)                    |
 | [go-playground/validator](https://github.com/go-playground/validator) | validations for structs and individual fields based on tags | [Github](https://github.com/go-playground/validator) |
-| [golang.org/x/time/rate](https://pkg.go.dev/golang.org/x/time/rate)   | Rate Limiter                                                | [Github](https://pkg.go.dev/golang.org/x/time/rate)  |
+| [github.com/go-chi/httprate](github.com/go-chi/httprate)              | Go Chi Rate Limiter                                         | [Github](github.com/go-chi/httprate)                 |
 
 ## Structure
 
